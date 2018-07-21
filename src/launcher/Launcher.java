@@ -1,20 +1,22 @@
 package launcher;
 
+import constantes.Constantes;
+
 /**
  * 
  * @author Tyrynor, 21/07/2018
+ * History:
+ *  - Tyrynor, 22/07/2018 Création
  *
  */
 public class Launcher {
-
-	public static String MY_STRING = "Bite";
 	
 	/**
 	 * Lanceur de l'application
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(Launcher.MY_STRING);
+		System.out.println(Constantes.IHM_NOM_FENTRE);
 	}
 
 }
