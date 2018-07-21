@@ -1,6 +1,9 @@
 package launcher;
 
+import javax.swing.JFrame;
+
 import constantes.Constantes;
+import ihm.Fenetre;
 
 /**
  * 
@@ -16,7 +19,7 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(Constantes.IHM_NOM_FENTRE);
+		JFrame fenetre = new Fenetre();
 	}
 
 }
