@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import constantes.Constantes;
+import entitees.Joueur;
 
 /**
  * 
@@ -14,8 +15,11 @@ import constantes.Constantes;
  */
 public class PrincipalPane extends JPanel {
 	
+	private Joueur j;
+	
 	public PrincipalPane() {
 		super();
+		j = new Joueur(300, 300);
 		this.setPreferredSize(Constantes.IHM_TAILLE_FENETRE);
 		this.repaint();
 	}
@@ -26,6 +30,7 @@ public class PrincipalPane extends JPanel {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.setColor(Color.BLUE);
 		g.fillOval(100, 100, 100, 200);
+		j.draw(g);
 	}
 	
 }

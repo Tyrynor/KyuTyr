@@ -3,6 +3,7 @@ package ihm;
 import javax.swing.JFrame;
 
 import constantes.Constantes;
+import entitees.Joueur;
 
 /**
  * 
@@ -11,6 +12,7 @@ import constantes.Constantes;
  */
 public class Fenetre extends JFrame {
 	
+
 	public Fenetre() {
 		super(Constantes.IHM_NOM_FENTRE);
 		this.setSize(Constantes.IHM_TAILLE_FENETRE);
