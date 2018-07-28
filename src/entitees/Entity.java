@@ -1,39 +1,32 @@
 package entitees;
 
 import java.awt.Graphics;
+import java.util.Observable;
+
+import outils.Stats;
 
 /**
  * 
  * @author Tyrynor, 22/07/2018
  *
  */
-public abstract class Entity {
-	private int posX, posY;
+public abstract class Entity extends Observable{
 	
-	public Entity(int initPosX, int initPosY) {
-		this.posX = initPosX;
-		this.posY = initPosY;
+	protected Stats stats;
+	
+	public Entity(Stats sts) {
+		this.stats = sts;
 	}
 	
-	public int getPosX() {
-		return this.posX;
-	}
-	
-	public int getPosY() {
-		return this.posY;
-	}
-	
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-	
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public Stats getStats() {
+		return this.stats;
 	}
 	
 	public boolean move(int x,int y) {
-		this.posX += x;
-		this.posY += y;
+		this.stats.posX += x;
+		this.stats.posY += y;
+		this.setChanged();
+		this.notifyObservers();
 		return true;
 	}
 	

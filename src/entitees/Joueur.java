@@ -3,17 +3,29 @@ package entitees;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Joueur extends Entity {
+import outils.Stats;
+import usine.SingletonStatsJoueur;
 
-	public Joueur(int initPosX, int initPosY) {
-		super(initPosX, initPosY);
-		
+public class Joueur extends Entity {
+	
+	public Joueur() {
+		super(null);
+	}
+	
+	@Override
+	public boolean move(int x,int y) {
+		SingletonStatsJoueur.getIntance().posX+=x;
+		SingletonStatsJoueur.getIntance().posY+=y;
+		this.setChanged();
+		this.notifyObservers();
+		return true;
 	}
 
 	@Override
 	public void draw(Graphics g) {
+		System.out.println("Ma bite");
 		g.setColor(Color.GREEN);
-		g.fillOval(this.getPosX(),this.getPosY(),20,20);
+		g.fillOval(SingletonStatsJoueur.getIntance().posX,SingletonStatsJoueur.getIntance().posY,20,20);
 	}
 
 }
