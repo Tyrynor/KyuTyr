@@ -1,7 +1,6 @@
 package entitees;
 
 import java.awt.Graphics;
-import java.util.Observable;
 
 import outils.Stats;
 
@@ -10,12 +9,15 @@ import outils.Stats;
  * @author Tyrynor, 22/07/2018
  *
  */
-public abstract class Entity extends Observable{
-	
+public abstract class Entity{
+	public static int nbOfEntity = 0;
 	protected Stats stats;
+	public final int EntityId;
 	
 	public Entity(Stats sts) {
 		this.stats = sts;
+		this.EntityId = Entity.nbOfEntity;
+		Entity.nbOfEntity++;
 	}
 	
 	public Stats getStats() {
@@ -25,8 +27,6 @@ public abstract class Entity extends Observable{
 	public boolean move(int x,int y) {
 		this.stats.posX += x;
 		this.stats.posY += y;
-		this.setChanged();
-		this.notifyObservers();
 		return true;
 	}
 	

@@ -1,6 +1,7 @@
 package ihm;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControl;
@@ -12,19 +13,32 @@ import usine.SingletonJoueur;
  *
  */
 public class Fenetre extends JFrame {
-	
+	PrincipalPane jp = new PrincipalPane();
 
 	public Fenetre() {
 		super(Constantes.IHM_NOM_FENTRE);
 		this.setSize(Constantes.IHM_TAILLE_FENETRE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		PrincipalPane p = new PrincipalPane();
-		this.setContentPane(p);
+		this.setContentPane(jp);
 		this.setUndecorated(true);
 		this.addKeyListener(new KeyControl());
-		SingletonJoueur.getInstance().addObserver(p);
 		this.setVisible(true);
 	}
+	
+	public void loop() {
+		while (true) {
+			try {
+				SingletonJoueur.getInstance().move(0, 0);
+				jp.repaint();
+				Thread.sleep(1000/Constantes.TARGETTEDFPS);
+			}
+			catch (Exception e) {
+				
+			}
+		
+		}
+	}
+	
 	
 }

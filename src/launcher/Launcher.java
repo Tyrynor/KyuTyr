@@ -19,7 +19,8 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		JFrame fenetre = new Fenetre();
+		Fenetre fenetre = new Fenetre();
+		fenetre.loop();
 	}
 
 }
