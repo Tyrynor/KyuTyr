@@ -5,6 +5,8 @@ import java.awt.Graphics;
 
 import constantes.Constantes;
 import outils.Stats;
+import usine.SingletonJoueur;
+import usine.SingletonStatsJoueur;
 
 public  class Monster extends Entity {
 	
@@ -15,7 +17,9 @@ public  class Monster extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillOval(this.stats.posX, this.stats.posY, 20, 20);
+		int posXD = SingletonStatsJoueur.getInstance().posX;
+		int posYD = SingletonStatsJoueur.getInstance().posY;
+		g.fillOval(this.stats.posX+ Constantes.REFERENTIEL_JOUEUR.width-posXD, this.stats.posY+Constantes.REFERENTIEL_JOUEUR.height-posYD, 20, 20);
 	}
 
 }

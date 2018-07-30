@@ -47,15 +47,15 @@ public class Joueur extends Entity {
 			x=0;
 			y=0;
 		}
-		SingletonStatsJoueur.getIntance().posX+=x;
-		SingletonStatsJoueur.getIntance().posY+=y;
+		SingletonStatsJoueur.getInstance().posX+=x;
+		SingletonStatsJoueur.getInstance().posY+=y;
 		return true;
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.GREEN);
-		g.fillOval(SingletonStatsJoueur.getIntance().posX,SingletonStatsJoueur.getIntance().posY,Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
+		g.fillOval(Constantes.REFERENTIEL_JOUEUR.width,Constantes.REFERENTIEL_JOUEUR.height,Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
 	}
 
 }

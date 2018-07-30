@@ -5,11 +5,11 @@ import outils.Stats;
 public class SingletonStatsJoueur {
 	private static Stats instance = null;
 	
-	public static Stats getIntance() {
+	public static Stats getInstance() {
 		if (instance == null) {
 			instance = new Stats();
-			instance.posX = 500;
-			instance.posY = 500;
+			instance.posX = 0;
+			instance.posY = 0;
 		}
 		return instance;
 	}

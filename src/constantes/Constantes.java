@@ -17,4 +17,5 @@ public final class Constantes {
 	public static final int VITESSE_DE_DEPLACEMENT = 5;
 	public static final double FACTEUR_BIAIS = Math.sqrt(2) / 2;
 	public static int TARGETTEDFPS = 60;
+	public static final Dimension REFERENTIEL_JOUEUR = new Dimension((int)Constantes.IHM_TAILLE_FENETRE.getWidth()/2-Constantes.TAILLE_BASE_ENTITY.width, (int)Constantes.IHM_TAILLE_FENETRE.getHeight()/2-Constantes.TAILLE_BASE_ENTITY.height);
 }
