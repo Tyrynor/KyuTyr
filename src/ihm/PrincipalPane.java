@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControl;
+import entitees.Entity;
 import entitees.Joueur;
+import usine.EntityStock;
 import usine.SingletonJoueur;
 
 /**
@@ -41,6 +43,9 @@ public class PrincipalPane extends JPanel{
 			lastNbOfRedraw = nbOfRedraw;
 			nbOfRedraw = 0;
 		}
+		EntityStock.instanceList.forEach(e -> {
+			e.draw(g);
+		});
 		SingletonJoueur.getInstance().draw(g);
 		g.setColor(Color.RED);
 		g.drawString(lastNbOfRedraw+"", 50,50);

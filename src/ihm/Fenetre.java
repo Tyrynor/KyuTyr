@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControl;
+import usine.EntityStock;
 import usine.SingletonJoueur;
 
 /**
@@ -30,6 +31,9 @@ public class Fenetre extends JFrame {
 		while (true) {
 			try {
 				SingletonJoueur.getInstance().move(0, 0);
+				EntityStock.instanceList.forEach(e -> {
+					e.move((int)(Math.random()*20)-10, (int)(Math.random()*20)-10);
+				});
 				jp.repaint();
 				Thread.sleep(1000/Constantes.TARGETTEDFPS);
 			}
