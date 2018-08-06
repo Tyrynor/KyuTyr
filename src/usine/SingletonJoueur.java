@@ -2,7 +2,7 @@ package usine;
 
 import entitees.Joueur;
 
-public class SingletonJoueur {
+public abstract class SingletonJoueur {
 	private static Joueur instance = null;
 	
 	public static Joueur getInstance() {

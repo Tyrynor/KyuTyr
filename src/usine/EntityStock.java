@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import entitees.Entity;
 
-public class EntityStock {
+public abstract class EntityStock {
 	public static ArrayList<Entity> instanceList = new ArrayList<Entity>();
 	
 	public static boolean addNewEntity(Entity e) {

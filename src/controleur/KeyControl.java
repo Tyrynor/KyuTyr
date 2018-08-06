@@ -4,12 +4,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import constantes.Constantes;
+import ihm.MenuPane;
 import usine.SingletonJoueur;
+import usine.SingletonPrincipalPane;
 
 public class KeyControl implements KeyListener {
 
-	
-	
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		switch (arg0.getKeyCode()) {
@@ -24,6 +24,11 @@ public class KeyControl implements KeyListener {
 			break;
 		case KeyEvent.VK_LEFT:
 			SingletonJoueur.getInstance().left = true;
+			break;
+		case KeyEvent.VK_ESCAPE:
+			MenuPane p = new MenuPane();
+			SingletonPrincipalPane.getInstance().changePane(p, null);
+			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			break;
 		}
 	}

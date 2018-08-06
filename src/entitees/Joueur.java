@@ -2,8 +2,11 @@ package entitees;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import constantes.Constantes;
+import outils.HitBox;
+import outils.Stats;
 import usine.SingletonStatsJoueur;
 
 public class Joueur extends Entity {
@@ -16,6 +19,7 @@ public class Joueur extends Entity {
 	
 	@Override
 	public boolean move(int x,int y) {
+		int prevX=SingletonStatsJoueur.getInstance().posX, prevY=SingletonStatsJoueur.getInstance().posY;
 		x = y = Constantes.VITESSE_DE_DEPLACEMENT;
 		if (left && !right) {
 			if (top && !bot) {
@@ -49,13 +53,29 @@ public class Joueur extends Entity {
 		}
 		SingletonStatsJoueur.getInstance().posX+=x;
 		SingletonStatsJoueur.getInstance().posY+=y;
+		if (!HitBox.canMove(this)) {
+			SingletonStatsJoueur.getInstance().posX = prevX;
+			SingletonStatsJoueur.getInstance().posY = prevY;
+			return false;
+		}
 		return true;
+	}
+	
+	@Override
+	public Rectangle getHitBox() {
+		Stats sts = SingletonStatsJoueur.getInstance();
+		return new Rectangle(Constantes.REFERENTIEL_JOUEUR.width,Constantes.REFERENTIEL_JOUEUR.height, Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.GREEN);
 		g.fillOval(Constantes.REFERENTIEL_JOUEUR.width,Constantes.REFERENTIEL_JOUEUR.height,Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
+		g.setColor(Color.BLUE);
+		g.drawString(SingletonStatsJoueur.getInstance().posX + "/" + SingletonStatsJoueur.getInstance().posY, Constantes.REFERENTIEL_JOUEUR.width, Constantes.REFERENTIEL_JOUEUR.height);
+		g.setColor(Color.RED);
+		Rectangle r = this.getHitBox();
+		g.drawRect(Constantes.REFERENTIEL_JOUEUR.width,Constantes.REFERENTIEL_JOUEUR.height,Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
 	}
 
 }

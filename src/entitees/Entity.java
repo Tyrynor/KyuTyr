@@ -1,8 +1,12 @@
 package entitees;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
+import constantes.Constantes;
+import outils.HitBox;
 import outils.Stats;
+import usine.SingletonStatsJoueur;
 
 /**
  * 
@@ -20,6 +24,12 @@ public abstract class Entity{
 		Entity.nbOfEntity++;
 	}
 	
+	public Rectangle getHitBox() {
+		int posXD = SingletonStatsJoueur.getInstance().posX;
+		int posYD = SingletonStatsJoueur.getInstance().posY;
+		return new Rectangle(this.stats.posX+ Constantes.REFERENTIEL_JOUEUR.width-posXD, this.stats.posY+Constantes.REFERENTIEL_JOUEUR.height-posYD, this.stats.width, this.stats.height);
+	}
+	
 	public Stats getStats() {
 		return this.stats;
 	}
@@ -27,6 +37,10 @@ public abstract class Entity{
 	public boolean move(int x,int y) {
 		this.stats.posX += x;
 		this.stats.posY += y;
+		if (!HitBox.canMove(this)) {
+			this.stats.posX -= x;
+			this.stats.posY -= y;
+		}
 		return true;
 	}
 	
