@@ -1,5 +1,9 @@
 package controleur;
 
+/**
+ * @author Tyrynor
+ */
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,7 +13,9 @@ import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
 
 public class KeyControl implements KeyListener {
-
+	/**
+	 * 
+	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		switch (arg0.getKeyCode()) {
