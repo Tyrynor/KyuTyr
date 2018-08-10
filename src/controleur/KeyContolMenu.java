@@ -25,7 +25,7 @@ public class KeyContolMenu implements KeyListener {
 			SingletonPrincipalPane.getInstance().changePane(null,new KeyControl());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			break;
-		default : 
+		default  : 
 			if (isChangingControl) {
 				
 			}
