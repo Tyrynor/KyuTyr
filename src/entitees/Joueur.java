@@ -53,7 +53,7 @@ public class Joueur extends Entity {
 		}
 		SingletonStatsJoueur.getInstance().posX+=x;
 		SingletonStatsJoueur.getInstance().posY+=y;
-		if (!HitBox.canMove(this)) {
+		while (!HitBox.canMove(this)) {
 			SingletonStatsJoueur.getInstance().posX = prevX;
 			SingletonStatsJoueur.getInstance().posY = prevY;
 			return false;

@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 
 import constantes.Constantes;
 import ihm.MenuPane;
+import playerPreferences.Options;
 import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
 
@@ -18,42 +19,30 @@ public class KeyControl implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		switch (arg0.getKeyCode()) {
-		case KeyEvent.VK_UP: 
-			SingletonJoueur.getInstance().top = true;
-			break;
-		case KeyEvent.VK_DOWN:
-			SingletonJoueur.getInstance().bot = true;
-			break;
-		case KeyEvent.VK_RIGHT:
-			SingletonJoueur.getInstance().right = true;
-			break;
-		case KeyEvent.VK_LEFT:
-			SingletonJoueur.getInstance().left = true;
-			break;
+		int request = arg0.getKeyCode();
+		switch (request) {
 		case KeyEvent.VK_ESCAPE:
 			MenuPane p = new MenuPane();
-			SingletonPrincipalPane.getInstance().changePane(p, null);
+			SingletonPrincipalPane.getInstance().changePane(p, new KeyContolMenu());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			break;
+		default:
+			if (request == Options.up) SingletonJoueur.getInstance().top = true;
+			else if (request == Options.down) SingletonJoueur.getInstance().bot = true;
+			else if (request == Options.left) SingletonJoueur.getInstance().left = true;
+			else if (request == Options.right) SingletonJoueur.getInstance().right = true;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		switch (arg0.getKeyCode()) {
-		case KeyEvent.VK_UP: 
-			SingletonJoueur.getInstance().top = false;
-			break;
-		case KeyEvent.VK_DOWN:
-			SingletonJoueur.getInstance().bot = false;
-			break;
-		case KeyEvent.VK_RIGHT:
-			SingletonJoueur.getInstance().right = false;
-			break;
-		case KeyEvent.VK_LEFT:
-			SingletonJoueur.getInstance().left = false;
-			break;
+		int request = arg0.getKeyCode();
+		switch (request) {
+		default:
+			if (request == Options.up) SingletonJoueur.getInstance().top = false;
+			else if (request == Options.down) SingletonJoueur.getInstance().bot = false;
+			else if (request == Options.left) SingletonJoueur.getInstance().left = false;
+			else if (request == Options.right) SingletonJoueur.getInstance().right = false;
 		}
 	}
 
