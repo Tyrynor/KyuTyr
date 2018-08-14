@@ -11,6 +11,11 @@ Ce projet étant fait sur le temps libre de ses créateurs, le développement ri
 
 #### **ChangeLog :**
 
+* **V.APLHA.0.1 :**
+	* Ajout du menu des options
+	* Ajout des traductions
+	* Ajout d'un système de sauvegarde des entrées claviers affectées aux différentes fonctionnalités
+
 * **V.ALPHA.0.0 :**
 	*  Création du moteur de jeu de base
 	*  Gestion des entitées
@@ -23,5 +28,5 @@ Ce projet étant fait sur le temps libre de ses créateurs, le développement ri
 
 #### **Staff :**
 
-* <b style = 'color: darkred'>Tyrynor</b> <i style = 'color : grey'>(Quentin FERRY)</i> : chef de projet et développeur
-*  <b style = 'color: darkred'>TrustOtaku</b>  <i style = 'color : grey'>(Anthony MARTIN)</i> : développeur 
+* **Tyrynor** *(Quentin FERRY)*: chef de projet et développeur
+* **TrustOtaku**  *(Anthony MARTIN)* : développeur 
