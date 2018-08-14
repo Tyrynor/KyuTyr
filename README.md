@@ -1,7 +1,7 @@
 # ***KyuTyr***
-### Un jeu créé par Tyrynor en collaboration avec TrustOtaku
+## Un jeu créé par Tyrynor en collaboration avec TrustOtaku
 
-#### **Présentation du projet :**
+### **Présentation du projet :**
 
 KyuTyr est un projet de jeu dont l'idée est venue par une belle nuit d'été. A la base un défit pour nous même, ce jeu est devenue une véritable obsession.
 
@@ -9,7 +9,7 @@ KyuTyr est un RPG 2D en vue du dessus. L'idée derrière est d'allier le charme 
 
 Ce projet étant fait sur le temps libre de ses créateurs, le développement risque de prendre beaucoup de temps.
 
-#### **ChangeLog :**
+### **ChangeLog :**
 
 * **V.APLHA.0.1 :**
 	* Ajout du menu des options
@@ -24,9 +24,9 @@ Ce projet étant fait sur le temps libre de ses créateurs, le développement ri
 	*  Gestion des déplacement
 	*  Gestion des hit-boxs
 
-#### **Documentation technique :**
+### **Documentation technique :**
 
-#### **Staff :**
+### **Staff :**
 
 * **Tyrynor** *(Quentin FERRY)*: chef de projet et développeur
 * **TrustOtaku**  *(Anthony MARTIN)* : développeur 
