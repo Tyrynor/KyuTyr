@@ -9,7 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import constantes.Constantes;
-import controleur.KeyContolMenu;
+import controleur.KeyControlMenu;
+import traductions.TranslationManager;
 import controleur.KeyControl;
 import usine.SingletonPrincipalPane;
 
@@ -26,35 +27,35 @@ public class OptionPane extends JPanel {
 		this.requestFocusInWindow();
 		this.setBackground(Color.GRAY);
 		this.setLayout(null);
-		p = new JButton("Affichage");
+		p = new JButton(TranslationManager.translate("Display"));
 		p.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2-125, 100, 50);
 		p.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingletonPrincipalPane.getInstance().changePane(null,new KeyContolMenu());
+				SingletonPrincipalPane.getInstance().changePane(null,new KeyControlMenu());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			}
 		});
 		this.add(p);
-		o = new JButton("Control");
+		o = new JButton(TranslationManager.translate("Controls"));
 		o.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2, 100, 50);
 		o.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingletonPrincipalPane.getInstance().changePane(new ControlPane(), new KeyContolMenu());
+				SingletonPrincipalPane.getInstance().changePane(new ControlPane(), new KeyControlMenu());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			}
 		});
 		this.add(o);
-		q = new JButton("Retour");
+		q = new JButton(TranslationManager.translate("Return"));
 		q.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2+125, 100, 50);
 		q.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingletonPrincipalPane.getInstance().changePane(new MenuPane(),new KeyContolMenu());
+				SingletonPrincipalPane.getInstance().changePane(new MenuPane(),new KeyControlMenu());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			}
 		});

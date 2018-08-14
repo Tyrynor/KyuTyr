@@ -6,7 +6,10 @@ import java.util.Scanner;
 import outils.Stats;
 
 public class EntityGenerator {
-
+	/**
+	 * Générateur d'entitée
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		System.out.println("---Enter the name of your entity---");
 		Scanner sc = new Scanner(System.in);
@@ -15,7 +18,7 @@ public class EntityGenerator {
 		String extended = sc.nextLine();
 		System.err.println("Your class " + name + " will heritate from " + extended);
 		System.out.println("---Do you want to make it abstract? (Y/N)---");
-		String abstracted = sc.nextLine().equals("Y") ? "abstract" : "";
+		String abstracted = sc.nextLine().equals("Y") ? " abstract" : "";
 		File f = new File("D:\\Eclipse-workspace\\KyuTyr\\src\\entitees\\" + name + ".java");
 		try {
 			System.out.println(f.getPath());
@@ -28,7 +31,7 @@ public class EntityGenerator {
 					"\r\n" + 
 					"import constantes.Constantes;\r\n" + 
 					"\r\n" + 
-					"public " + abstracted + " class " + name + " extends " + extended + " {\r\n" +  
+					"public" + abstracted + " class " + name + " extends " + extended + " {\r\n" +  
 					"	\r\n" + 
 					"	public " + name + "(Stats sts) {\r\n" + 
 					"		super(sts);\r\n" + 

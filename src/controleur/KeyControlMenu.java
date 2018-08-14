@@ -9,15 +9,12 @@ import java.awt.event.KeyListener;
 
 import constantes.Constantes;
 import ihm.MenuPane;
+import playerPreferences.Options;
 import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
 
-public class KeyContolMenu implements KeyListener {
+public class KeyControlMenu implements KeyListener {
 	
-	public boolean isChangingControl = false;
-	/**
-	 * 
-	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		switch (arg0.getKeyCode()) {
@@ -25,10 +22,6 @@ public class KeyContolMenu implements KeyListener {
 			SingletonPrincipalPane.getInstance().changePane(null,new KeyControl());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			break;
-		default  : 
-			if (isChangingControl) {
-				
-			}
 		}
 	}
 

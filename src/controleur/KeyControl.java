@@ -15,7 +15,7 @@ import usine.SingletonPrincipalPane;
 
 public class KeyControl implements KeyListener {
 	/**
-	 * 
+	 * Méthode qui permet le déplacement du joueur
 	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -23,7 +23,7 @@ public class KeyControl implements KeyListener {
 		switch (request) {
 		case KeyEvent.VK_ESCAPE:
 			MenuPane p = new MenuPane();
-			SingletonPrincipalPane.getInstance().changePane(p, new KeyContolMenu());
+			SingletonPrincipalPane.getInstance().changePane(p, new KeyControlMenu());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			break;
 		default:
@@ -34,6 +34,9 @@ public class KeyControl implements KeyListener {
 		}
 	}
 
+	/**
+	 * Méthode qui permet d'arreter le déplacement du joueur
+	 */
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		int request = arg0.getKeyCode();
