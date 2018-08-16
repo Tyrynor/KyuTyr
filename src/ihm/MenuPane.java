@@ -15,6 +15,7 @@ import constantes.Constantes;
 import controleur.KeyControlMenu;
 import controleur.KeyControl;
 import music.MusicListener;
+import music.MusicManager;
 import traductions.TranslationManager;
 import usine.SingletonPrincipalPane;
 
@@ -39,6 +40,7 @@ public class MenuPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				SingletonPrincipalPane.getInstance().changePane(null, new KeyControl());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
+				MusicManager.music.pause();
 			}
 		});
 		this.add(p);

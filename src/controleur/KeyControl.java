@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 
 import constantes.Constantes;
 import ihm.MenuPane;
+import music.MusicManager;
 import playerPreferences.Options;
 import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
@@ -25,6 +26,7 @@ public class KeyControl implements KeyListener {
 			MenuPane p = new MenuPane();
 			SingletonPrincipalPane.getInstance().changePane(p, new KeyControlMenu());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
+			MusicManager.music.playOn();
 			break;
 		default:
 			if (request == Options.up) SingletonJoueur.getInstance().top = true;

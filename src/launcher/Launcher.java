@@ -6,6 +6,7 @@ import constantes.Constantes;
 import entitees.Monster;
 import ihm.Fenetre;
 import music.MusicListener;
+import music.MusicManager;
 import playerPreferences.Options;
 import traductions.TranslationManager;
 import usine.EntityStock;
@@ -29,8 +30,8 @@ public class Launcher {
 		TranslationManager.toFrensh();
 		EntityStock.addNewEntity(new Monster(StatsFactory.createNewStats((int)(Math.random()*Constantes.IHM_TAILLE_FENETRE.getWidth()),(int)(Math.random()*Constantes.IHM_TAILLE_FENETRE.getHeight()))));
 		Options.loadFromFile();
-		MusicListener ml = new MusicListener();
-		ml.start();
+		MusicManager.setMenuMusic();
+		MusicManager.launchMusic();
 		SingletonFrame.getInstance().loop();
 	}
 

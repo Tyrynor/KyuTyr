@@ -63,7 +63,6 @@ public class Joueur extends Entity {
 	
 	@Override
 	public Rectangle getHitBox() {
-		Stats sts = SingletonStatsJoueur.getInstance();//working
 		return new Rectangle(Constantes.REFERENTIEL_JOUEUR.width,Constantes.REFERENTIEL_JOUEUR.height, Constantes.TAILLE_BASE_ENTITY.width,Constantes.TAILLE_BASE_ENTITY.height);
 	}
 
