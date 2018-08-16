@@ -44,7 +44,7 @@ public class ControlPane extends JPanel {
 		up = new JLabel(TranslationManager.translate("UP"));
 		up.setBounds((int)size.getWidth()/2-100, (int)size.getHeight()/2-150, 100, 50);
 		this.add(up);
-		upText = new JButton(TranslationManager.translateInKey(Options.getKeyName("up")));
+		upText = new JButton(Options.getKeyName("up"));
 		upText.setBounds((int)size.getWidth()/2, (int)size.getHeight()/2-150, 100, 50);
 		upText.addActionListener(new ActionListener() {
 			
@@ -60,7 +60,7 @@ public class ControlPane extends JPanel {
 		down = new JLabel(TranslationManager.translate("DOWN"));
 		down.setBounds((int)size.getWidth()/2-100, (int)size.getHeight()/2-100, 100, 50);
 		this.add(down);
-		downText = new JButton(TranslationManager.translateInKey(Options.getKeyName("down")));
+		downText = new JButton(Options.getKeyName("down"));
 		downText.setBounds((int)size.getWidth()/2, (int)size.getHeight()/2-100, 100, 50);
 		downText.addActionListener(new ActionListener() {
 			
@@ -76,7 +76,7 @@ public class ControlPane extends JPanel {
 		left = new JLabel(TranslationManager.translate("LEFT"));
 		left.setBounds((int)size.getWidth()/2-100, (int)size.getHeight()/2-50, 100, 50);
 		this.add(left);
-		leftText = new JButton(TranslationManager.translateInKey(Options.getKeyName("left")));
+		leftText = new JButton(Options.getKeyName("left"));
 		leftText.setBounds((int)size.getWidth()/2, (int)size.getHeight()/2-50, 100, 50);
 		leftText.addActionListener(new ActionListener() {
 			
@@ -92,7 +92,7 @@ public class ControlPane extends JPanel {
 		right = new JLabel(TranslationManager.translate("RIGHT"));
 		right.setBounds((int)size.getWidth()/2-100, (int)size.getHeight()/2, 100, 50);
 		this.add(right);
-		rightText = new JButton(TranslationManager.translateInKey(Options.getKeyName("right")));
+		rightText = new JButton(Options.getKeyName("right"));
 		rightText.setBounds((int)size.getWidth()/2, (int)size.getHeight()/2, 100, 50);
 		rightText.addActionListener(new ActionListener() {
 			

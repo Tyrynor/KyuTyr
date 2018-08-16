@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import traductions.TranslationManager;
+
 public class Options {
 	public static int up = KeyEvent.VK_UP; 
 	public static int down = KeyEvent.VK_DOWN;
@@ -26,7 +28,7 @@ public class Options {
 		} else if (name.equals("right")) {
 			key = right;
 		}
-		return KeyEvent.getKeyText(key);
+		return TranslationManager.translate(KeyEvent.getKeyText(key));
 	}
 	
 	public static boolean affectByName(String name,int key) {
