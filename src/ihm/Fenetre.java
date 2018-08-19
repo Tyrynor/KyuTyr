@@ -49,7 +49,7 @@ public class Fenetre extends JFrame {
 				Thread.sleep(1000/Constantes.TARGETTEDFPS);
 			}
 			catch (Exception e) {
-				
+				e.printStackTrace();
 			}
 		
 		}

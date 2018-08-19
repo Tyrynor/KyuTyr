@@ -76,7 +76,7 @@ public class PrincipalPane extends JPanel{
 			e.draw(g);
 		});
 		SingletonJoueur.getInstance().draw(g);
-		g.setColor(Color.RED);
+		g.setColor(Color.BLACK);
 		g.drawString(lastNbOfRedraw+"", 50,50);
 	}
 }

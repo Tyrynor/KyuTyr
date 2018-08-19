@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import constantes.Constantes;
+import outils.Calcules;
 import outils.HitBox;
 import outils.Stats;
 import usine.SingletonStatsJoueur;
@@ -25,9 +26,8 @@ public abstract class Entity{
 	}
 	
 	public Rectangle getHitBox() {
-		int posXD = SingletonStatsJoueur.getInstance().posX;
-		int posYD = SingletonStatsJoueur.getInstance().posY;
-		return new Rectangle(this.stats.posX+ Constantes.REFERENTIEL_JOUEUR.width-posXD, this.stats.posY+Constantes.REFERENTIEL_JOUEUR.height-posYD, this.stats.width, this.stats.height);
+		int refX = Calcules.posXRefPlayer(this.stats.posX), refY = Calcules.posYRefPlayer(this.stats.posY);
+		return new Rectangle(refX,refY, this.stats.width, this.stats.height);
 	}
 	
 	public Stats getStats() {

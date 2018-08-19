@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import constantes.Constantes;
+import outils.Calcules;
 import outils.Stats;
-import usine.SingletonJoueur;
-import usine.SingletonStatsJoueur;
 
-public  class Monster extends Entity {
+public  class Monster extends Entity implements AttackingEntity{
 	
 	public Monster(Stats sts) {
 		super(sts);
@@ -17,13 +15,20 @@ public  class Monster extends Entity {
 	
 	@Override
 	public void draw(Graphics g) {
+		int refX = Calcules.posXRefPlayer(this.stats.posX), refY = Calcules.posYRefPlayer(this.stats.posY);
+		g.setColor(Color.GREEN);
+		g.drawString(this.stats.posX + "/" + this.stats.posY, refX, refY);
 		g.setColor(Color.BLACK);
-		int posXD = SingletonStatsJoueur.getInstance().posX;
-		int posYD = SingletonStatsJoueur.getInstance().posY;
-		g.fillOval(this.stats.posX+ Constantes.REFERENTIEL_JOUEUR.width-posXD, this.stats.posY+Constantes.REFERENTIEL_JOUEUR.height-posYD, 20, 20);
+		g.fillOval(refX, refY, 20, 20);
 		g.setColor(Color.RED);
 		Rectangle r = this.getHitBox();
 		g.drawRect(r.x, r.y, r.width, r.height);
+	}
+
+	@Override
+	public boolean attaquer() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

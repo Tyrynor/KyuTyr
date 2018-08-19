@@ -28,7 +28,7 @@ public class Options {
 		} else if (name.equals("right")) {
 			key = right;
 		}
-		return TranslationManager.translate(KeyEvent.getKeyText(key));
+		return TranslationManager.translateInKey(KeyEvent.getKeyText(key));
 	}
 	
 	public static boolean affectByName(String name,int key) {

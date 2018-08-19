@@ -3,9 +3,15 @@ package traductions;
 public class TranslationManager {
 	public static Language currentLanguage;
 	
-	public static void toFrensh() {
-		if(!(currentLanguage instanceof Frensh)) {
-			currentLanguage = new Frensh();
+	public static void toFrench() {
+		if(!(currentLanguage instanceof French)) {
+			currentLanguage = new French();
+		}
+	}
+	
+	public static void toEnglish() {
+		if(!(currentLanguage instanceof English)) {
+			currentLanguage = new English();
 		}
 	}
 	

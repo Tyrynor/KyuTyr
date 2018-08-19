@@ -27,7 +27,7 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TranslationManager.toFrensh();
+		TranslationManager.toFrench();
 		EntityStock.addNewEntity(new Monster(StatsFactory.createNewStats((int)(Math.random()*Constantes.IHM_TAILLE_FENETRE.getWidth()),(int)(Math.random()*Constantes.IHM_TAILLE_FENETRE.getHeight()))));
 		Options.loadFromFile();
 		MusicManager.setMenuMusic();
