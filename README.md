@@ -26,6 +26,8 @@ Ce projet étant fait sur le temps libre de ses créateurs, le développement ri
 
 ### **Documentation technique :**
 
+***A venir***
+
 ### **Staff :**
 
 * **Tyrynor** *(Quentin FERRY)*: chef de projet et développeur
