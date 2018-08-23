@@ -19,6 +19,7 @@ public class OptionPane extends JPanel {
 	public JButton p;
 	public JButton o;
 	public JButton q;
+	public JButton l;
 	
 	public OptionPane() {
 		super();
@@ -28,7 +29,7 @@ public class OptionPane extends JPanel {
 		this.setBackground(Color.GRAY);
 		this.setLayout(null);
 		p = new JButton(TranslationManager.translate("Display"));
-		p.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2-125, 100, 50);
+		p.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2-200, 100, 50);
 		p.addActionListener(new ActionListener() {
 			
 			@Override
@@ -39,7 +40,7 @@ public class OptionPane extends JPanel {
 		});
 		this.add(p);
 		o = new JButton(TranslationManager.translate("Controls"));
-		o.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2, 100, 50);
+		o.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2-100, 100, 50);
 		o.addActionListener(new ActionListener() {
 			
 			@Override
@@ -50,7 +51,7 @@ public class OptionPane extends JPanel {
 		});
 		this.add(o);
 		q = new JButton(TranslationManager.translate("Return"));
-		q.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2+125, 100, 50);
+		q.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2+200, 100, 50);
 		q.addActionListener(new ActionListener() {
 			
 			@Override
@@ -60,6 +61,17 @@ public class OptionPane extends JPanel {
 			}
 		});
 		this.add(q);
+		l = new JButton(TranslationManager.translate("Language"));
+		l.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2, 100, 50);
+		l.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SingletonPrincipalPane.getInstance().changePane(new LanguagePane(),new KeyControlMenu());
+				SingletonPrincipalPane.getInstance().requestFocusInWindow();
+			}
+		});
+		this.add(l);
 	}
 }
 
