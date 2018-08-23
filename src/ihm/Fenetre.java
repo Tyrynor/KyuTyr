@@ -65,7 +65,6 @@ public class Fenetre extends JFrame {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		
 		}
 	}
 	
