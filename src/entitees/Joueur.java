@@ -92,15 +92,6 @@ public class Joueur extends Entity implements AttackingEntity{
 		Rectangle r = this.getHitBox();
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.draw(r);
-		for (Entity e : EntityStock.instanceList) {
-			g.setColor(Color.MAGENTA);
-			AffineTransform at = AffineTransform.getRotateInstance(e.getHitBox().getCenterX()-r.getCenterX(),e.getHitBox().getCenterY()-r.getCenterY(), r.getCenterX(), r.getCenterY());
-			Shape sp = at.createTransformedShape(new Rectangle((int)r.getCenterX()+(int)r.getWidth()/2, (int)r.getCenterY()-(int)r.getHeight()/4, (int)r.getWidth()+50, (int)r.getHeight()/2));
-			if (sp.intersects(e.getHitBox())) {
-				g.setColor(Color.BLUE);
-			}
-			g2d.draw(sp);
-		}
 		if (isAttacking) {
 			attackingFramesRemaining--;
 			drawAttack(g, r);

@@ -15,6 +15,7 @@ import controleur.MouseControl;
 import usine.EntityStock;
 import usine.SingletonFrame;
 import usine.SingletonJoueur;
+import usine.SingletonStatsJoueur;
 
 /**
  * 
@@ -104,6 +105,7 @@ public class PrincipalPane extends JPanel{
 		});
 		SingletonJoueur.getInstance().draw(g);
 		g.setColor(Color.BLACK);
-		g.drawString(lastNbOfRedraw+"", 50,50);
+		g.drawString(lastNbOfRedraw+"", this.getWidth() - 50,50);
+		SingletonStatsJoueur.drawPlayerStats(g);
 	}
 }

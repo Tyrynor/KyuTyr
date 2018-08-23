@@ -21,4 +21,8 @@ public class Calcules {
 		return Math.sqrt(Math.pow((r1.getCenterX()-r2.getCenterX()),2)+Math.pow(r1.getCenterY()-r2.getCenterY(), 2));
 	}
 	
+	public static int percent(int a, int b) {
+		return (int)(((double)a/(double)b)*100);
+	}
+	
 }
