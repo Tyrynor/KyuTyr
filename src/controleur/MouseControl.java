@@ -9,7 +9,7 @@ public class MouseControl implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		SingletonJoueur.getInstance().attaquer(arg0);
+		
 	}
 
 	@Override
@@ -26,8 +26,7 @@ public class MouseControl implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
+		SingletonJoueur.getInstance().attaquer(arg0);
 	}
 
 	@Override

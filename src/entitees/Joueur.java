@@ -95,7 +95,7 @@ public class Joueur extends Entity implements AttackingEntity{
 		for (Entity e : EntityStock.instanceList) {
 			g.setColor(Color.MAGENTA);
 			AffineTransform at = AffineTransform.getRotateInstance(e.getHitBox().getCenterX()-r.getCenterX(),e.getHitBox().getCenterY()-r.getCenterY(), r.getCenterX(), r.getCenterY());
-			Shape sp = at.createTransformedShape(new Rectangle((int)r.getCenterX()-(int)r.getWidth()/4, (int)r.getCenterY()-(int)r.getHeight()/4, (int)r.getWidth()+50, (int)r.getHeight()-20));
+			Shape sp = at.createTransformedShape(new Rectangle((int)r.getCenterX()+(int)r.getWidth()/2, (int)r.getCenterY()-(int)r.getHeight()/4, (int)r.getWidth()+50, (int)r.getHeight()/2));
 			if (sp.intersects(e.getHitBox())) {
 				g.setColor(Color.BLUE);
 			}
@@ -103,12 +103,22 @@ public class Joueur extends Entity implements AttackingEntity{
 		}
 		if (isAttacking) {
 			attackingFramesRemaining--;
-			AffineTransform at = AffineTransform.getRotateInstance(theta+=0.1, r.getCenterX(), r.getCenterY());
-			g2d.draw(at.createTransformedShape(r));
+			drawAttack(g, r);
+			if (attackingFramesRemaining <= 0) {
+				isAttacking = false;
+			}
 		}
 	}
 
-	
+	public void drawAttack (Graphics g, Rectangle r) {
+		g.setColor(Color.MAGENTA);
+		AffineTransform at = AffineTransform.getRotateInstance(dirX-r.getCenterX(),dirY-r.getCenterY(), r.getCenterX(), r.getCenterY());
+		Shape sp = at.createTransformedShape(new Rectangle((int)r.getCenterX()+(int)r.getWidth()/2, (int)r.getCenterY()-(int)r.getHeight()/4, (int)r.getWidth()+50, (int)r.getHeight()/2));
+		if (HitBox.allHittedEntity(sp, this).size() > 0) {
+			g.setColor(Color.BLUE);
+		}
+		((Graphics2D)g).draw(sp);
+	}
 	
 	@Override
 	public boolean attaquer() {
@@ -119,8 +129,8 @@ public class Joueur extends Entity implements AttackingEntity{
 		if (isAttacking) {
 			return false;
 		} else {
-			dirX = m.getX()-SingletonStatsJoueur.getInstance().posX;
-			dirY = m.getY()-SingletonStatsJoueur.getInstance().posY;
+			dirX = m.getX();
+			dirY = m.getY();
 			attackingFramesRemaining = 10;
 			return isAttacking = true;
 		}

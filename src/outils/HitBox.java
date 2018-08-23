@@ -1,5 +1,8 @@
 package outils;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.util.ArrayList;
+import java.util.List;
 
 import entitees.Entity;
 import entitees.Joueur;
@@ -23,5 +26,15 @@ public final class HitBox{
 			}
 		}
 		return true;
+	}
+	
+	public static List<Entity> allHittedEntity(Shape sp, Entity linkedEntity) {
+		List<Entity> lE = new ArrayList<Entity>();
+		for (Entity entity : EntityStock.instanceList) {
+			if (linkedEntity.EntityId != entity.EntityId && sp.intersects(entity.getHitBox())) {
+				lE.add(entity);
+			}
+		}
+		return lE;
 	}
 }

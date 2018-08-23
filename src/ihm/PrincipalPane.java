@@ -1,15 +1,17 @@
 package ihm;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+import java.security.Principal;
 import java.util.Date;
 
 import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControl;
+import controleur.MouseControl;
 import usine.EntityStock;
 import usine.SingletonFrame;
 import usine.SingletonJoueur;
@@ -24,7 +26,8 @@ public class PrincipalPane extends JPanel{
 	private double timeIn;
 	private int nbOfRedraw;
 	private int lastNbOfRedraw = 0;
-	private KeyListener keyControler;
+	private KeyListener keyControler = null;
+	private MouseListener mouseListener = null;
 	private JPanel currentPane = null;
 	
 	public PrincipalPane() {
@@ -46,18 +49,42 @@ public class PrincipalPane extends JPanel{
 			this.currentPane.setBounds(0, 0, Constantes.IHM_TAILLE_FENETRE.width, Constantes.IHM_TAILLE_FENETRE.height);
 			this.add(this.currentPane);
 		}
-		SingletonFrame.getInstance().removeKeyControl().addKeyControl(k);
-		this.removeKeyControl().addKeyControl(k);
+		SingletonFrame.getInstance().removeKeyControl().addKeyControl(k).removeMouseControl();
+		this.removeKeyControl().addKeyControl(k).removeMouseControl();
 		this.repaint();
 	}
 	
-	public void addKeyControl(KeyListener k) {
+	public void changePane(JPanel p, KeyListener k, MouseListener m) {
+		this.remove(this.currentPane);
+		if (p != null) {
+			this.currentPane = p;
+			this.currentPane.setBounds(0, 0, Constantes.IHM_TAILLE_FENETRE.width, Constantes.IHM_TAILLE_FENETRE.height);
+			this.add(this.currentPane);
+		}
+		SingletonFrame.getInstance().removeKeyControl().addKeyControl(k).removeMouseControl().addMouseControl(m);
+		this.removeKeyControl().addKeyControl(k).removeMouseControl().addMouseControl(m);
+		this.repaint();
+	}
+	
+	public PrincipalPane addKeyControl(KeyListener k) {
 		this.addKeyListener(k);
 		this.keyControler = k;
+		return this;
+	}
+	
+	public PrincipalPane addMouseControl(MouseListener m) {
+		this.addMouseListener(m);
+		this.mouseListener = m;
+		return this;
 	}
 	
 	public PrincipalPane removeKeyControl() {
 		this.removeKeyListener(this.keyControler);
+		return this;
+	}
+	
+	public PrincipalPane removeMouseControl() {
+		this.removeMouseListener(this.mouseListener);
 		return this;
 	}
 	

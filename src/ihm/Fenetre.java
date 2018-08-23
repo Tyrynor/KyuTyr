@@ -1,6 +1,7 @@
 package ihm;
 
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ import usine.SingletonPrincipalPane;
 public class Fenetre extends JFrame {
 	
 	private KeyListener keyControler = null;
+	private MouseListener mouseListener = null;
 
 	public Fenetre() {
 		super(Constantes.IHM_NOM_FENTRE);
@@ -31,13 +33,25 @@ public class Fenetre extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public void addKeyControl(KeyListener k) {
+	public Fenetre addKeyControl(KeyListener k) {
 		this.addKeyListener(k);
 		this.keyControler = k;
+		return this;
+	}
+	
+	public Fenetre addMouseControl(MouseListener m) {
+		this.addMouseListener(m);
+		this.mouseListener = m;
+		return this;
 	}
 	
 	public Fenetre removeKeyControl() {
 		this.removeKeyListener(this.keyControler);
+		return this;
+	}
+	
+	public Fenetre removeMouseControl() {
+		this.removeMouseListener(this.mouseListener);
 		return this;
 	}
 	
