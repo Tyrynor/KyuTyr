@@ -9,6 +9,7 @@ public abstract class StatsFactory {
 		s.posY = initPosY;
 		s.width = 20;
 		s.height = 20;
+		s.speed = 3;
 		return s;
 	}
 }

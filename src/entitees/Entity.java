@@ -44,5 +44,40 @@ public abstract class Entity{
 		return true;
 	}
 	
+	public boolean move(int dx, int dy, boolean vectored) {
+		int x = 0;
+		int y = 0;
+		if (dx > 0) {
+			if (dy == 0) {
+				x = stats.speed;
+			} else {
+				x = (int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				if (dy > 0) {
+					y = (int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				} else {
+					y = -(int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				}
+			}
+		} else if (dx < 0) {
+			if (dy == 0) {
+				x = -stats.speed;
+			} else {
+				x = -(int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				if (dy > 0) {
+					y = (int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				} else {
+					y = -(int) (stats.speed * Constantes.FACTEUR_BIAIS);
+				}
+			}
+		} else {
+			if (dy > 0) {
+				y = stats.speed;
+			} else {
+				y = -stats.speed;
+			}
+		}
+		return move(x,y);
+	}
+	
 	public abstract void draw (Graphics g);
 }

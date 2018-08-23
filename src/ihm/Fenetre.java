@@ -59,6 +59,7 @@ public class Fenetre extends JFrame {
 		while (true) {
 			try {
 				SingletonJoueur.getInstance().move(0, 0);
+				EntityStock.doActions();
 				SingletonPrincipalPane.getInstance().repaint();
 				Thread.sleep(1000/Constantes.TARGETTEDFPS);
 			}

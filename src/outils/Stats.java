@@ -8,4 +8,5 @@ package outils;
 public class Stats {
 	public int posX,posY;
 	public int width, height;
+	public int speed;
 }
