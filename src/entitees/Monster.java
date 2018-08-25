@@ -6,8 +6,9 @@ import java.awt.Rectangle;
 
 import outils.Calcules;
 import outils.Stats;
+import usine.SingletonStatsJoueur;
 
-public  class Monster extends Entity implements AttackingEntity{
+public  class Monster extends Entity implements AttackingEntity, MovingEntity{
 	
 	public Monster(Stats sts) {
 		super(sts);
@@ -18,7 +19,7 @@ public  class Monster extends Entity implements AttackingEntity{
 		int refX = Calcules.posXRefPlayer(this.stats.posX), refY = Calcules.posYRefPlayer(this.stats.posY);
 		g.setColor(Color.GREEN);
 		g.drawString(this.stats.posX + "/" + this.stats.posY, refX, refY);
-		g.setColor(Color.BLACK);
+		g.setColor(Color.YELLOW);
 		g.fillOval(refX, refY, 20, 20);
 		g.setColor(Color.RED);
 		Rectangle r = this.getHitBox();
@@ -27,7 +28,7 @@ public  class Monster extends Entity implements AttackingEntity{
 
 	@Override
 	public boolean attaquer() {
-		// TODO Auto-generated method stub
+		SingletonStatsJoueur.getInstance().hp--;
 		return false;
 	}
 

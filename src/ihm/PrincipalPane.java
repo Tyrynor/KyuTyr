@@ -92,7 +92,7 @@ public class PrincipalPane extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		nbOfRedraw++;
-		g.setColor(Color.LIGHT_GRAY);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		if (timeIn + 1000 < new Date().getTime()) {
 			timeIn = new Date().getTime();
@@ -104,7 +104,7 @@ public class PrincipalPane extends JPanel{
 			e.draw(g);
 		});
 		SingletonJoueur.getInstance().draw(g);
-		g.setColor(Color.BLACK);
+		g.setColor(Color.BLUE);
 		g.drawString(lastNbOfRedraw+"", this.getWidth() - 50,50);
 		SingletonStatsJoueur.drawPlayerStats(g);
 	}

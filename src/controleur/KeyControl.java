@@ -2,6 +2,7 @@ package controleur;
 
 /**
  * @author Tyrynor
+ * Classe qui gère les entrées clavier dans le jeu
  */
 
 import java.awt.event.KeyEvent;
@@ -9,7 +10,9 @@ import java.awt.event.KeyListener;
 
 import constantes.Constantes;
 import ihm.MenuPane;
+import ihm.PausePane;
 import music.MusicManager;
+import outils.Variables;
 import playerPreferences.Options;
 import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
@@ -23,10 +26,15 @@ public class KeyControl implements KeyListener {
 		int request = arg0.getKeyCode();
 		switch (request) {
 		case KeyEvent.VK_ESCAPE:
-			MenuPane p = new MenuPane();
+			PausePane p = new PausePane();
 			SingletonPrincipalPane.getInstance().changePane(p, new KeyControlMenu());
 			SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			MusicManager.music.playOn();
+			Variables.gamePaused = true;
+			SingletonJoueur.getInstance().top = false;
+			SingletonJoueur.getInstance().bot = false;
+			SingletonJoueur.getInstance().left = false;
+			SingletonJoueur.getInstance().right = false;
 			break;
 		default:
 			if (request == Options.up) SingletonJoueur.getInstance().top = true;

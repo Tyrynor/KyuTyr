@@ -8,9 +8,11 @@ import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControl;
+import outils.Variables;
 import usine.EntityStock;
 import usine.SingletonJoueur;
 import usine.SingletonPrincipalPane;
+import usine.SingletonStatsJoueur;
 
 /**
  * 
@@ -58,9 +60,15 @@ public class Fenetre extends JFrame {
 	public void loop() {
 		while (true) {
 			try {
-				SingletonJoueur.getInstance().move(0, 0);
-				EntityStock.doActions();
-				SingletonPrincipalPane.getInstance().repaint();
+				if (!Variables.gamePaused) {
+					SingletonJoueur.getInstance().move(0, 0);
+					EntityStock.doActions();
+					SingletonStatsJoueur.checkRecovering();
+					SingletonPrincipalPane.getInstance().repaint();
+					if (SingletonStatsJoueur.getInstance().hp <= 0) {
+						SingletonPrincipalPane.getInstance().changePane(new GameOverPane(), null);
+					}
+				}
 				Thread.sleep(1000/Constantes.TARGETTEDFPS);
 			}
 			catch (Exception e) {

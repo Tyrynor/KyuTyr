@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Date;
 
 import constantes.Constantes;
 import outils.Calcules;
@@ -12,6 +13,10 @@ import traductions.TranslationManager;
 
 public abstract class SingletonStatsJoueur {
 	private static Stats instance = null;
+	
+	private static double lastHpR;
+	private static double lastMpR;
+	private static double lastSR;
 	
 	public static Stats getInstance() {
 		if (instance == null) {
@@ -22,17 +27,23 @@ public abstract class SingletonStatsJoueur {
 			instance.height = 50;
 			instance.defense = 10;
 			instance.dex = 1;
-			instance.hp = 5;
-			instance.maxHp = 15;
+			instance.hp = 50;
+			instance.maxHp = 50;
 			instance.intel = 2;
 			instance.mana = 20;
 			instance.maxMana = 20;
 			instance.maxStamina = 20;
-			instance.stamina = 20;
+			instance.stamina = 19;
 			instance.panic = 0;
 			instance.panic_resist = 1;
 			instance.str = 10;
 			instance.power = 2;
+			instance.recoverHPM = 2;
+			instance.recoverMPM = 1;
+			instance.recoverSPM = 36;
+			lastHpR = new Date().getTime();
+			lastMpR = new Date().getTime();
+			lastSR = new Date().getTime();
 		}
 		return instance;
 	}
@@ -64,5 +75,22 @@ public abstract class SingletonStatsJoueur {
 		Rectangle staminaMax = new Rectangle(100, 200, 300, 20);
 		((Graphics2D)g).draw(staminaMax);
 		((Graphics2D)g).fill(stamina);
+	}
+	
+	public static void checkRecovering() {
+		Stats s = getInstance();
+		double timeIn = new Date().getTime();
+		if (s.recoverHPM > 0 && timeIn > lastHpR + 60000 / s.recoverHPM) {
+			if (instance.hp < instance.maxHp)instance.hp++;
+			lastHpR = timeIn;
+		}
+		if (s.recoverMPM > 0 && timeIn > lastMpR + 60000 / s.recoverMPM) {
+			if (instance.mana < instance.maxMana)instance.mana++;
+			lastMpR = timeIn;
+		}
+		if (s.recoverSPM > 0 && timeIn > lastSR + 60000 / s.recoverSPM) {
+			if (instance.stamina < instance.maxStamina)instance.stamina++;
+			lastSR = timeIn;
+		}
 	}
 }

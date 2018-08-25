@@ -4,7 +4,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import usine.SingletonJoueur;
-
+/**
+ * 
+ * @author Tyrynor
+ * Classe qui gère les entrées souris dans le jeu
+ */
 public class MouseControl implements MouseListener {
 
 	@Override

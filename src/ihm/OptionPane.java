@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import constantes.Constantes;
 import controleur.KeyControlMenu;
+import outils.Variables;
 import traductions.TranslationManager;
 import controleur.KeyControl;
 import usine.SingletonPrincipalPane;
@@ -34,7 +35,7 @@ public class OptionPane extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingletonPrincipalPane.getInstance().changePane(null,new KeyControlMenu());
+				SingletonPrincipalPane.getInstance().changePane(new AffichagePane(),new KeyControlMenu());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			}
 		});
@@ -56,7 +57,7 @@ public class OptionPane extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SingletonPrincipalPane.getInstance().changePane(new MenuPane(),new KeyControlMenu());
+				SingletonPrincipalPane.getInstance().changePane(Variables.isAlreadyStarted?new PausePane():new MenuPane(),new KeyControlMenu());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
 			}
 		});

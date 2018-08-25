@@ -21,20 +21,20 @@ import outils.Variables;
 import traductions.TranslationManager;
 import usine.SingletonPrincipalPane;
 
-public class MenuPane extends JPanel {
+public class PausePane extends JPanel {
 
 	public JButton p;
 	public JButton o;
 	public JButton q;
 	
-	public MenuPane() {
+	public PausePane() {
 		super();
 		Dimension size = Constantes.IHM_TAILLE_FENETRE;
 		this.setPreferredSize(Constantes.IHM_TAILLE_FENETRE);
 		this.requestFocusInWindow();
 		this.setBackground(Color.GRAY);
 		this.setLayout(null);
-		p = new JButton(TranslationManager.translate("Play"));
+		p = new JButton(TranslationManager.translate("Continue"));
 		p.setBounds((int)size.getWidth()/2-50, (int)size.getHeight()/2-125, 100, 50);
 		p.addActionListener(new ActionListener() {
 			
@@ -42,9 +42,8 @@ public class MenuPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				SingletonPrincipalPane.getInstance().changePane(null, new KeyControl(), new MouseControl());
 				SingletonPrincipalPane.getInstance().requestFocusInWindow();
-				Variables.isAlreadyStarted = true;
-				Variables.gamePaused = false;
 				MusicManager.music.pause();
+				Variables.gamePaused = false;
 			}
 		});
 		this.add(p);

@@ -12,11 +12,14 @@ public class Stats {
 	public String name;
 	public int hp;
 	public int maxHp;
+	public int recoverHPM;
 	public int str;
 	public int mana;
 	public int maxMana;
+	public int recoverMPM;
 	public int stamina;
 	public int maxStamina;
+	public int recoverSPM;
 	public int power;
 	public int dex;
 	public int intel;

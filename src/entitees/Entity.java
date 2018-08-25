@@ -12,28 +12,46 @@ import usine.SingletonStatsJoueur;
 /**
  * 
  * @author Tyrynor, 22/07/2018
- *
+ * Classe abstraite permettant de définir les bases d'une entitée
  */
 public abstract class Entity{
 	public static int nbOfEntity = 0;
 	protected Stats stats;
 	public final int EntityId;
 	
+	/**
+	 * Constructeur de classe
+	 * @param sts Stats que l'ont veut assigner à une entitée (passer par StatsFactory)
+	 */
 	public Entity(Stats sts) {
 		this.stats = sts;
 		this.EntityId = Entity.nbOfEntity;
 		Entity.nbOfEntity++;
 	}
 	
+	/**
+	 * Méthode permettant de récupérer la hit-box de l'entitée	
+	 * @return la hit-box
+	 */
 	public Rectangle getHitBox() {
 		int refX = Calcules.posXRefPlayer(this.stats.posX), refY = Calcules.posYRefPlayer(this.stats.posY);
 		return new Rectangle(refX,refY, this.stats.width, this.stats.height);
 	}
 	
+	/**
+	 * getteur sur les stats
+	 * @return les stats
+	 */
 	public Stats getStats() {
 		return this.stats;
 	}
 	
+	/**
+	 * Méthode permettant de se déplacer
+	 * @param x montant du déplacement sur x
+	 * @param y montant du déplacement sur y
+	 * @return booleen qui permet de savoir si le déplacement est réussi
+	 */
 	public boolean move(int x,int y) {
 		this.stats.posX += x;
 		this.stats.posY += y;
@@ -43,7 +61,13 @@ public abstract class Entity{
 		}
 		return true;
 	}
-	
+	/**
+	 * Méthode permettant de se déplacer selon un vecteur de déplacement
+	 * @param dx
+	 * @param dy
+	 * @param vectored
+	 * @return
+	 */
 	public boolean move(int dx, int dy, boolean vectored) {
 		int x = 0;
 		int y = 0;
@@ -78,6 +102,9 @@ public abstract class Entity{
 		}
 		return move(x,y);
 	}
-	
+	/**
+	 * Méthode abstraite qui permet à l'entitée de se desssiner elle meme
+	 * @param g objet de dessin (Graphics)
+	 */
 	public abstract void draw (Graphics g);
 }

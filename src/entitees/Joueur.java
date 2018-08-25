@@ -17,7 +17,13 @@ import outils.Stats;
 import usine.EntityStock;
 import usine.SingletonStatsJoueur;
 
-public class Joueur extends Entity implements AttackingEntity{
+/**
+ * 
+ * @author Tyrynor
+ * Classe symbolisant le joueur (qui est une entitée avec un comportement spécial)
+ */
+
+public class Joueur extends Entity implements AttackingEntity, MovingEntity{
 	
 	public boolean left=false, right=false, top=false, bot=false;
 	
@@ -117,12 +123,13 @@ public class Joueur extends Entity implements AttackingEntity{
 	}
 	
 	public boolean attaquer(MouseEvent m) {
-		if (isAttacking) {
+		if (isAttacking || SingletonStatsJoueur.getInstance().stamina <= 0) {
 			return false;
 		} else {
 			dirX = m.getX();
 			dirY = m.getY();
 			attackingFramesRemaining = 10;
+			SingletonStatsJoueur.getInstance().stamina --;
 			return isAttacking = true;
 		}
 	}

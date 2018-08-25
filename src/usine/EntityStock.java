@@ -3,7 +3,9 @@ package usine;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import entitees.AttackingEntity;
 import entitees.Entity;
+import entitees.MovingEntity;
 import outils.Calcules;
 
 public abstract class EntityStock {
@@ -21,10 +23,13 @@ public abstract class EntityStock {
 	
 	public static void doActions() {
 		for (Entity e : instanceList) {
-			if (Calcules.distB2E(e, SingletonJoueur.getInstance()) <= 500) {
+			if (e instanceof MovingEntity && Calcules.distB2E(e, SingletonJoueur.getInstance()) <= 500) {
 				Rectangle rj = SingletonJoueur.getInstance().getHitBox();
 				Rectangle re = e.getHitBox();
 				e.move((int)(rj.getCenterX()-re.getCenterX()) ,(int)(rj.getCenterY()-re.getCenterY()) ,true);
+			}
+			if (e instanceof AttackingEntity && Calcules.distB2E(e, SingletonJoueur.getInstance()) <= 100) {
+				((AttackingEntity)e).attaquer(); 
 			}
 		}
 	}

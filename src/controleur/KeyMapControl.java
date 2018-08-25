@@ -10,6 +10,12 @@ import playerPreferences.Options;
 import traductions.TranslationManager;
 import usine.SingletonPrincipalPane;
 
+/**
+ * 
+ * @author Tyrynor
+ * Classe qui gère les entrées clavier dans la sélection des touches
+ */
+
 public class KeyMapControl implements KeyListener {
 
 	private String name;
